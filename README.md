@@ -1,4 +1,4 @@
-# Smart Shelf: on-device shelf monitoring that texts a manager before you run out of stock
+# Smart Shelf: real-time NPU object detection on the Dragonwing IQ-9075 EVK
 
 A USB camera watches a shelf. A Qualcomm Dragonwing EVK counts snack packets on-device, on its NPU, in real time. When the count drops, an AI agent with cross-session memory decides whether this is a normal fluctuation or a recurring restocking pattern — and if it's serious enough, texts a store manager on Telegram and flags a vendor to call.
 
