@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.venv/
+
+# Secrets / local config — see README for required env vars
+.env
+
+# Runtime-generated state (safe to regenerate)
+inventory_state.json
+backroom_inventory.csv
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
