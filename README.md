@@ -90,7 +90,7 @@ Point the camera at the shelf and just remove packets by hand — detection, deb
  
 **`error while loading shared libraries: libQnnTFLiteDelegate.so: cannot open shared object file`.** The Qualcomm IoT PPA isn't registered yet — add it (`ppa:ubuntu-qcom-iot/qcom-ppa`), then install `libqnn1`, `libsnpe1`, and their `-dev` packages via `apt`. This is a device-setup step, documented in Edge Impulse's own IQ-9075 guide.
  
-**Not sure the model is actually running on the NPU, not silently falling back to CPU?** Check the compiled model's own `--print-info` metadata — it reports `"engine_type": 4, "properties": ["qnn_delegates"]` directly when genuinely NPU-accelerated. This isn't something the surrounding Python code can misreport.
+**Not sure the model is actually running on the NPU, not silently falling back to CPU?** Check the compiled model's own `--print-info` metadata — it reports `"engine_type": 4, "properties": ["qnn_delegates"]` directly when NPU-accelerated. This isn't something the surrounding Python code can misreport.
  
 **No detections at all, even though the camera and model load fine.** Check `info['model_parameters'].get('model_type')` — a FOMO object-detection model returns a `bounding_boxes` list, not a flat classification score. Code that assumes classification output will silently find nothing.
  
@@ -110,7 +110,7 @@ Point the camera at the shelf and just remove packets by hand — detection, deb
  
 ## Known limitations
  
-- **Reasoning runs in the cloud, not on the NPU.** An attempt to host the reasoning LLM on-device via Qualcomm's GenieX runtime hit real compatibility issues with Hermes Agent (streaming response schema mismatches, then a colon-handling bug in Hermes's model-ID resolution). Given time constraints, this was abandoned in favor of a reliable cloud-hosted model via Nous Portal. Only the vision stage is genuinely fully on-device end-to-end.
+- **Reasoning runs in the cloud, not on the NPU.** An attempt to host the reasoning LLM on-device via Qualcomm's GenieX runtime hit real compatibility issues with Hermes Agent (streaming response schema mismatches, then a colon-handling bug in Hermes's model-ID resolution). Given time constraints, this was abandoned in favor of a reliable cloud-hosted model via Nous Portal. Only the vision stage is fully on-device end-to-end.
 - **Reasoning latency scales with memory size** — there's no summarization or pruning yet, so latency grows as history accumulates.
 - **Conversational memory retrieval is less reliable than the automated pipeline's.** Specific, well-scoped questions work; vague ones can miss relevant data.
 - **Not designed for heavily occluded or deeply stacked items** — a structural limitation of the lightweight FOMO architecture (grid-cell-based detection), not a labeling or training-data problem.
