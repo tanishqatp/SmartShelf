@@ -2,9 +2,9 @@
 
 A USB camera watches a shelf. A Qualcomm Dragonwing EVK counts snack packets on-device, on its NPU, in real time. When the count drops, an AI agent with cross-session memory decides whether this is a normal fluctuation or a recurring restocking pattern — and if it's serious enough, texts a store manager on Telegram and flags a vendor to call.
 
-**Hardware:** Qualcomm Dragonwing IQ-9075 EVK (36 GB RAM, Hexagon NPU) + USB webcam
-**Difficulty:** Intermediate
-**Stack:** Python (OpenCV, `edge_impulse_linux`) · [Hermes Agent](https://github.com/NousResearch/hermes-agent) (Nous Research) · Telegram Bot API
+- **Hardware:** Qualcomm Dragonwing IQ-9075 EVK (36 GB RAM, Hexagon NPU) + USB webcam
+- **Difficulty:** Intermediate
+- **Stack:** Python (OpenCV, `edge_impulse_linux`) · [Hermes Agent](https://github.com/NousResearch/hermes-agent) (Nous Research) · Telegram Bot API
 
 Object detection is genuinely on-device and NPU-accelerated. Reasoning runs through Hermes Agent against a cloud-hosted model — a deliberate tradeoff explained in [Known limitations](#known-limitations) below, after an attempt to host the reasoning LLM on-device too ran into compatibility issues.
 
