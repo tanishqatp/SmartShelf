@@ -5,6 +5,7 @@ A USB camera watches a shelf. A Qualcomm Dragonwing EVK counts snack packets on-
 - **Hardware:** Qualcomm Dragonwing IQ-9075 EVK (36 GB RAM, Hexagon NPU) + USB webcam
 - **Difficulty:** Intermediate — on-device vision, an external agent framework, and a messaging integration
 - **Stack:** Python (OpenCV, `edge_impulse_linux`) · [Hermes Agent](https://github.com/NousResearch/hermes-agent) (Nous Research) · Telegram Bot API
+
 Object detection is genuinely on-device and NPU-accelerated. Reasoning runs through Hermes Agent against a cloud-hosted model — a deliberate tradeoff explained in [Known limitations](#known-limitations) below, after an attempt to host the reasoning LLM on-device too ran into compatibility issues.
  
 ## What you'll build
